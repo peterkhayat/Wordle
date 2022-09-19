@@ -25,31 +25,49 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(it.context, "Clicked Button!", Toast.LENGTH_SHORT).show()
             count++
             if (count == 1) {
+                findViewById<TextView>(R.id.textView2).visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView17)
                 textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
                 result = checkGuess(textView.text.toString())
                 textView.visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView18)
                 textView.text = result
+                textView.visibility = View.VISIBLE
             }
             if (count == 2) {
+                findViewById<TextView>(R.id.textView3).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.textView4).visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView19)
                 textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
                 result = checkGuess(textView.text.toString())
                 textView.visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView20)
                 textView.text = result
+                textView.visibility = View.VISIBLE
             }
             if (count == 3) {
+                findViewById<TextView>(R.id.textView5).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.textView6).visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView21)
                 textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
                 result = checkGuess(textView.text.toString())
                 textView.visibility = View.VISIBLE
                 textView = findViewById<TextView>(R.id.textView22)
                 textView.text = result
+                textView.visibility = View.VISIBLE
+                textView = findViewById<TextView>(R.id.textView)
+                textView.text = wordToGuess
+                textView.visibility = View.VISIBLE
+                button.text = "reset"
             }
             else{
-                //
+                if(button.text == "reset"){
+                    count = 0
+                    wordToGuess = FourLetterWordList.getRandomFourLetterWord()
+                    button.text = "GUESS!"
+                    reset()
+                }
+
             }
             //textView.text = counter.toString()
         }
@@ -84,5 +102,33 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return result
+    }
+
+    private fun reset(){
+        var textView = findViewById<TextView>(R.id.textView17)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView18)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView19)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView20)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView21)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView22)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView2)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView3)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView4)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView5)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView6)
+        textView.visibility = View.INVISIBLE
+         textView = findViewById<TextView>(R.id.textView)
+        textView.visibility = View.INVISIBLE
+
     }
 }
