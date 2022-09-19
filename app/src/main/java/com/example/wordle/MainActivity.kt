@@ -1,9 +1,11 @@
 package com.example.wordle
 
-import android.R
+
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -13,10 +15,47 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        while(count != 3){
-            val simpleEditText = findViewById<View>(R.id.editTextTextPersonName) as EditText
-            val strValue = simpleEditText.text.toString()
+        val button = findViewById<Button>(R.id.button)
+        var textView = findViewById<TextView>(R.id.textView17)
+        var result : String?
+
+       // val textView = findViewById<View>(android.R.id.textView17) as EditText
+        button.setOnClickListener {
+            // Handle user interaction here
+            //Toast.makeText(it.context, "Clicked Button!", Toast.LENGTH_SHORT).show()
+            count++
+            if (count == 1) {
+                textView = findViewById<TextView>(R.id.textView17)
+                textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
+                result = checkGuess(textView.text.toString())
+                textView.visibility = View.VISIBLE
+                textView = findViewById<TextView>(R.id.textView18)
+                textView.text = result
+            }
+            if (count == 2) {
+                textView = findViewById<TextView>(R.id.textView19)
+                textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
+                result = checkGuess(textView.text.toString())
+                textView.visibility = View.VISIBLE
+                textView = findViewById<TextView>(R.id.textView20)
+                textView.text = result
+            }
+            if (count == 3) {
+                textView = findViewById<TextView>(R.id.textView21)
+                textView.text = findViewById<EditText>(R.id.editTextTextPersonName).text
+                result = checkGuess(textView.text.toString())
+                textView.visibility = View.VISIBLE
+                textView = findViewById<TextView>(R.id.textView22)
+                textView.text = result
+            }
+            else{
+                //
+            }
+            //textView.text = counter.toString()
         }
+
+        //val simpleEditText = findViewById<EditText>(R.id.editTextTextPersonName)
+        //val strValue = simpleEditText.text.toString()
 
     }
     /**
@@ -32,6 +71,8 @@ class MainActivity : AppCompatActivity() {
     private fun checkGuess(guess: String) : String {
         var result = ""
         for (i in 0..3) {
+            println("test")
+            println(wordToGuess)
             if (guess[i] == wordToGuess[i]) {
                 result += "O"
             }
